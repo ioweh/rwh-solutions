@@ -1,0 +1,2 @@
+let sortByLength :: [[a]] -> [[a]]
+    sortByLength xs = sortBy (compare `on` length) xs

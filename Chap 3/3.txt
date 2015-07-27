@@ -1,0 +1,5 @@
+let mean :: [Double] -> Double
+    mean xs = meanProc 0 0 xs
+        where meanProc :: Double -> Double -> [Double] -> Double
+              meanProc total length [] = total / length
+              meanProc total length (x:xs) = meanProc (x + total) (1 + length) xs

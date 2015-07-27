@@ -1,0 +1,9 @@
+data Point = Point Double Double deriving (Show)
+data Direction = LeftTurn | RightTurn | Straight deriving (Show)
+
+let calculateTurn :: Point -> Point -> Point -> Direction
+    calculateTurn (Point x1 y1) (Point x2 y2) (Point x3 y3)
+        | crossProduct > 0 = LeftTurn
+        | crossProduct < 0 = RightTurn
+        | otherwise        = Straight
+            where crossProduct = (x2 - x1) * (y3 - y1) - (y2 - y1) * (x3 - x1)

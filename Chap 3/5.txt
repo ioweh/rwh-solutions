@@ -1,0 +1,6 @@
+let isPalindrome :: (Eq a) => [a] -> Bool
+    isPalindrome [] = True
+    isPalindrome (_:[]) = False
+    isPalindrome (x:xs)
+        | x == last xs = isPalindrome (init xs)
+        | otherwise    = False

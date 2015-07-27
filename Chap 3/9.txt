@@ -1,0 +1,4 @@
+http://rdt45m.narod.ru/tenzor_html/vector3_1_2.htm
+- a nice explanation of vectors
+
+data Direction = Left | Right | Straight deriving (Show)
