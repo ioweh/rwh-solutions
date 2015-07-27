@@ -1,2 +1,5 @@
 type Directions = [Direction]
 
+let calculateTurns :: [Point] -> [Direction]
+    calculateTurns (p1:p2:p3:[]) = calculateTurn p1 p2 p3 : []
+    calculateTurns (p1:p2:p3:rest) = calculateTurn p1 p2 p3 : calculateTurns (p2:p3:rest)
