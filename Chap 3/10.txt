@@ -1,5 +1,5 @@
-data Point = Point Double Double deriving (Show)
-data Direction = LeftTurn | RightTurn | Straight deriving (Show)
+data Point = Point Double Double deriving (Show, Eq)
+data Direction = LeftTurn | RightTurn | Straight deriving (Show, Eq)
 
 let calculateTurn :: Point -> Point -> Point -> Direction
     calculateTurn (Point x1 y1) (Point x2 y2) (Point x3 y3)
