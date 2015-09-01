@@ -1,0 +1,3 @@
+let splitWith :: (a -> Bool) -> [a] -> [[a]]
+    splitWith _ []               = [[]]
+    splitWith pred (x:xs)        = if pred x then (\n -> (x:head n):tail n) (splitWith pred xs) else []:splitWith pred xs
