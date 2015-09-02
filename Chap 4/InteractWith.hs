@@ -14,5 +14,3 @@ main = mainWith myFunction
 -- replace "id" with the name of our function below
 myFunction = unlines . map (\xs -> if null xs then [] else (head . words $ xs)) . lines
 
-justFunc = id
-
