@@ -1,6 +1,6 @@
 dist
 cabal-dev
-*.exe
+**/*.exe
 *.o
 *.hi
 *.chi
