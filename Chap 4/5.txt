@@ -1,0 +1,6 @@
+let addTwo :: [b] -> [[b]] -> [[b]]
+    addTwo _ []              = []
+    addTwo [] _              = []
+    addTwo (x:xs) (y:ys)     = (x:y) : addTwo xs ys
+
+unlines . foldr addTwo (replicate 5 "") . lines $ "hello\nthere\ncruel\nworld"
