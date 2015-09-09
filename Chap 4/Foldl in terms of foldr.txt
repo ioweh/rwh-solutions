@@ -1,0 +1,54 @@
+myFoldl :: (a -> b -> a) -> a -> [b] -> a
+
+myFoldl f z xs = foldr 
+
+step id xs z = xs (f z id)
+
+foldr xs (f z id)
+
+Ok, let's express foldl in terms of foldr:
+
+What if we return a curried function instead of a concrete result?
+
+
+Let's imagine that the f function was given from above.
+
+\2 g (f x a) -> g (f (f x a) 2
+
+\2 g (f 3 a) -> g (f 2 (f 3 a))
+
+\1 g (f 2 (f 3 a)) -> g (f 1 (f 2 (f 3 a)))
+
+foldr (\x g a -> g (f x a)) id [1,2,3]
+
+\x g a -> id (f 3 a) = f 3 a
+
+\2 id (f 3 a) -> id (f 2 (f 3 a))
+
+\3 id a -> id (f 3 a) = f 3 a
+
+\x (f 3) a -> f 3 (f 2 a)
+
+\x (f 3 (f 2 a)) a -> (f 3 (f 2 a)) (f 1 a)
+
+(\x g a -> g (f x a))
+
+Note: we're using a right fold here.
+
+On the second step:
+
+(\x (\g a -> g (f x a)))
+
+(\a -> id (f 3 a))
+
+Next step:
+
+(a -> (\a -> id (f 3 a)) (f 2 a)), which is:
+(a -> (id (f 3 (f 2 a))
+
+Next step:
+
+(\a -> (\a -> id (f 3 (f 2 a))) (f 1 a)), which is:
+(\a -> (id (f 3 (f 2 (f 1 a)))))
+
+our foldr, thus, returned a function. Now we just need toapply this function to the element that serves as a null value.
