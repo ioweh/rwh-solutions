@@ -1,0 +1,42 @@
+Let's remember how bind operator is defined:
+
+:t (>>=)
+(>>=) :: Monad m => m a -> (a -> m b) -> m b
+
+Then let's look at how Either is a monad:
+
+instance (Error e) => Monad (Either e) where
+    return x = Right x
+    Right x >>= f = f x
+    Left err >>= f
+    fail msg = Left (strMsg msg)
+
+import Data.Char (isDigit)
+import Data.Char (digitToInt)
+
+let f = \x -> if isDigit x then Right (digitToInt x) else Left (x : " doesn't look like a digit")
+
+f x will return Right 1, let's assume.
+
+f x >>= (\x -> acc * 10 + x)
+
+do we have to use return here?
+
+Yes! We have to!
+
+Also, please note:
+
+Right 4 >> f '3' >>= \x -> return (3*10 + x)
+Right 33
+
+Left "oh wow!" >> f '3' >>= \x -> return (3*10 + x)
+Left "oh wow!"
+
+So, let's sum it up.
+
+let f = \x -> if isDigit x then Right (digitToInt x) else Left (x : " doesn't look like a digit")
+
+type ErrorMessage = String
+
+let asInt_fold : String -> Either ErrorMessage Int
+asInt_fold = foldl (\acc x -> acc >>= \acc -> f x >>= \x -> return (acc*10 + x)) (Right 0)
