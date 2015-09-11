@@ -1,0 +1,4 @@
+let myTakeWhile :: (a -> Bool) -> [a] -> [a]
+    myTakeWhile pred (x:xs)
+        | pred x      = x : myTakeWhile pred xs
+        | otherwise   = []

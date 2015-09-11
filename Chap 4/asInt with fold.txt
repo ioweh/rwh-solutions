@@ -40,3 +40,6 @@ type ErrorMessage = String
 
 let asInt_fold : String -> Either ErrorMessage Int
 asInt_fold = foldl (\acc x -> acc >>= \acc -> f x >>= \x -> return (acc*10 + x)) (Right 0)
+
+let asInf_fold = foldl (\acc x -> acc >>= \acc -> (x -> if isDigit x then Right (digitToInt x) else Left (x : "is not a digit")) x >>= \x -> return (acc*10 x)) (Right 0)
+
