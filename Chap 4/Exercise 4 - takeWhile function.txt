@@ -2,3 +2,6 @@ let myTakeWhile :: (a -> Bool) -> [a] -> [a]
     myTakeWhile pred (x:xs)
         | pred x      = x : myTakeWhile pred xs
         | otherwise   = []
+
+foldr (\x acc -> if x /= 'h' then x : acc else []) [] "orchid"
+orc
