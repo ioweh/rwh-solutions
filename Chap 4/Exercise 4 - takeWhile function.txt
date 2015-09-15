@@ -5,3 +5,7 @@ let myTakeWhile :: (a -> Bool) -> [a] -> [a]
 
 foldr (\x acc -> if x /= 'h' then x : acc else []) [] "orchid"
 orc
+
+- what a crock of code!
+
+Need to rewrite it correctly. (Maybe later)

@@ -1,0 +1,1 @@
+let myGroupBy pred list = foldr (\x acc -> if (null $ acc) then [[x]] else if (pred x (head . head $ acc)) then [x:(head acc)] ++ (tail acc) else (x:[]):acc) [] list
