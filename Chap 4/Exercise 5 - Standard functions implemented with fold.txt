@@ -1,0 +1,10 @@
+let myAny pred list = foldr (\x acc -> if pred x then True else acc) False list
+
+let myCycle list = foldr (\x acc -> x:acc) (myCycle list) list
+
+let myWords :: String -> [String]
+    myWords string = foldr (\x (y:ys) -> if x == ' ' then []:(y:ys) else (x:y):ys) [[]] string
+
+let myUnlines :: [String] -> String
+    myUnlines strings = foldr (\x acc -> x ++ "\n" ++ acc) [] strings
+
